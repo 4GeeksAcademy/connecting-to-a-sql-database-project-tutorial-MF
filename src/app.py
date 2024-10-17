@@ -112,8 +112,12 @@ engine.execute('''
 ''')
 
 # 4) Use pandas to print one of the tables as dataframes using read_sql function
-df = pd.read_sql("SELECT * FROM publishers;", engine)
-print(df)
-#result = engine.execute(("SELECT * FROM publishers"))
-#for row in result:
-#    print(f"Publisher ID: {row['publisher_id']}, Name: {row['name']}")
+df0 = pd.read_sql("SELECT * FROM publishers;", con=engine.connect().connection)
+df1 = pd.read_sql("SELECT * FROM authors;", con=engine.connect().connection)
+df2 = pd.read_sql("SELECT * FROM books;", con=engine.connect().connection)
+df3 = pd.read_sql("SELECT * FROM book_authors;", con=engine.connect().connection)
+
+print(df0)
+#print(df1)
+#print(df2)
+#print(df3)
